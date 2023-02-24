@@ -79,13 +79,13 @@
             if ($postList->num_rows > 0) {
                 while ($row = $postList->fetch_assoc()) {
             ?>
-                    <div class="col-sm-3">
+                    <div class="col-sm-4">
                         <div class="card mb-2" style="width: 100%;">
                             <!-- <img src="images/songs/cayvagio.jpg" class="card-img-top" alt="..."> -->
                             <img src=<?php echo $row["hinhanh"] ?> class="card-img-top" alt="...">
                             <div class="card-body">
                                 <h5 class="card-title text-center">
-                                    <a href="" class="text-decoration-none"><?php echo $row["tieude"] ?></a>
+                                    <a href="./page_detail.php?mabviet=<?php echo $row["ma_bviet"] ?>" class="text-decoration-none"><?php echo $row["tieude"] ?></a>
                                 </h5>
                             </div>
                         </div>

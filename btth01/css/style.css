@@ -29,3 +29,6 @@ body{
     overflow-y: hidden;
 }
 
+.card-title {
+    font-size: small;
+}
