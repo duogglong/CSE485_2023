@@ -25,10 +25,10 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="./">Trang chủ</a>
+                            <a class="nav-link active" aria-current="page" href="./page_index.php">Trang chủ</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="./login.php">Đăng nhập</a>
+                            <a class="nav-link" href="./page_login.php">Đăng nhập</a>
                         </li>
                     </ul>
                     <form class="d-flex" role="search">
@@ -53,8 +53,6 @@
 
             $posts = getPostByCode($code);
 
-            // $rowData = $post->fetch_assoc();
-            // mysqli_fetch_assoc($post);
             if ($posts->num_rows > 0) {
                 while ($row = $posts->fetch_assoc()) {
             ?>
@@ -63,10 +61,44 @@
                             <a href="" class="text-decoration-none"><?php echo $row["tieude"] ?></a>
                         </h5>
                         <p class="card-text"><span class=" fw-bold">Bài hát: </span><?php echo $row["ten_bhat"] ?></p>
-                        <p class="card-text"><span class=" fw-bold">Thể loại: </span>null</p>
+                        <p class="card-text"><span class=" fw-bold">Thể loại: </span>
+
+                            <?php
+                            require_once './database_category.php';
+                            $code = $_GET['mabviet'];
+                            $categories = getCategoryByCode($code);
+                            if ($categories->num_rows > 0) {
+                                while ($cate = $categories->fetch_assoc()) {
+                            ?>
+                                    <span>
+                                        <?php echo $cate["ten_tloai"] ?>,
+                                    </span>
+                            <?php
+                                }
+                            }
+                            ?>
+
+                        </p>
                         <p class="card-text"><span class=" fw-bold">Tóm tắt: </span><?php echo $row["tomtat"] ?></p>
                         <p class="card-text"><span class=" fw-bold">Nội dung: </span><?php echo $row["noidung"] ?></p>
-                        <p class="card-text"><span class=" fw-bold">Tác giả: </span>null</p>
+                        <p class="card-text"><span class=" fw-bold">Tác giả: </span>
+
+                            <?php
+                            require_once './database_author.php';
+                            $code = $_GET['mabviet'];
+                            $authors = getAuthorByCode($code);
+                            if ($authors->num_rows > 0) {
+                                while ($author = $authors->fetch_assoc()) {
+                            ?>
+                                    <span>
+                                        <?php echo $author["ten_tgia"] ?>,
+                                    </span>
+                            <?php
+                                }
+                            }
+                            ?>
+
+                        </p>
 
                     </div>
             <?php
