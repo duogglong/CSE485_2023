@@ -1,0 +1,37 @@
+- Lấy code từ kho git về: 
+git clone <link git>
+VD: git clone https://github.com/duogglong/CSE485_2023.git
+
+- Lệnh check những thay đổi tại nhánh hiện tại (branch):
+git status
+
+- Lệnh thêm các file đã thay đổi vào commit:
+git add .
+
+- Lệnh commit file đã thay đổi TRÊN MÁY MÌNH (gọi là máy local), 
+khi gõ commit này các file mới chỉ đẩy lên bộ nhớ máy local, 
+chưa lên kho dữ liệu trên github:
+git commit -m "your message"
++ Lưu ý: Lệnh này chỉ commit những file đã được add
+
+- Sau khi đã commit, trước khi đẩy code lên nhánh, nhớ phải kéo code trên remote về bằng lệnh:
+git pull origin branchName
+VD: git pull origin ft/query_data
+
+- Sau khi đã kéo code về máy local (đồng bộ code), đẩy code lên nhánh hiện tại bằng lệnh sau:
+git push origin branchName
+VD: git push origin ft/query_data
+
+* Một số lệnh khác:
+- Đồng bộ các nhánh mới từ remote về máy local:
+git fetch
+
+- Lệnh dùng để checkout nhánh mới từ remote về (nhánh này chưa có trên máy local) thì dùng lệnh sau:
+git checkout origin/branchName
+VD: git checkout origin/ft/login
+Sau khi dùng lệnh này, gõ lệnh này để để tạo tên nhánh trên máy local: git checkout ft/login
+
+- Lệnh dùng để tạo nhánh mới (code sẽ lấy từ nhánh hiện tại bạn đang đứng, để xem đang đứng nhánh nào, dùng git status):
+git checkout -b ft/login
+
+
