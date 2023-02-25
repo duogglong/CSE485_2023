@@ -70,10 +70,10 @@ CREATE TABLE baiviet_tacgia
     FOREIGN KEY (ma_tgia) REFERENCES tacgia (ma_tgia)
 );
 
-CREATE TABLE user
+CREATE TABLE users
 (
     id INT           NOT NULL AUTO_INCREMENT PRIMARY KEY,
     username   VARCHAR(20) NOT NULL,
-    password   VARCHAR(30) NOT NULL,
+    password   VARCHAR(30) NOT NULL
 );
 
