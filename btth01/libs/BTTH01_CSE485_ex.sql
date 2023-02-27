@@ -117,3 +117,43 @@ where tb.ma_tloai is null;
 # khi thêm/sửa/xóa bài viết thì số lượng bài viết trong bảng theloai được cập nhật theo.
 
 
+#caue
+select  ma_tloai ,count(ma_tloai)
+from baiviet
+group by ma_tloai
+order by count(ma_tloai) desc
+LIMIT 1;
+#cauf
+
+create view cauf 
+as
+select  ma_tgia ,count(ma_tgia)
+from baiviet
+group by ma_tgia
+order by count(ma_tgia) desc
+LIMIT 2;
+
+select ten_tgia
+from tacgia
+where ma_tgia in(
+select ma_tgia from cauf);
+#caug
+select ma_bviet,tieude
+from baiviet
+where tomtat like '%yêu%' OR tomtat like'%thương%' OR tomtat like'%anh%' OR  tomtat like'%em%';
+#cauh
+select ma_bviet,tieude
+from baiviet
+where tomtat like '%yêu%' OR tomtat like'%thương%' OR tomtat like'%anh%' OR  tomtat like'%em%' OR tieude like '%yêu%' OR tieude like'%thương%' OR tieude like'%anh%' OR  tieude like'%em%';
+#caui
+create view vw_Music 
+as
+select tieude, ten_tgia, ten_tloai
+from tacgia
+inner join baiviet
+on tacgia.ma_tgia = baiviet.ma_tgia
+inner join theloai
+on theloai.ma_tloai = baiviet.ma_tloai
+select * from vw_Music
+#cauj
+create procedure sp_DSBAIVIET(IN ten_tloai varchar(50)
