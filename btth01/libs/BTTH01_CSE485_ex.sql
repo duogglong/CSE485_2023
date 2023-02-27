@@ -77,3 +77,43 @@ CREATE TABLE users
     password   VARCHAR(30) NOT NULL
 );
 
+# a. Liệt kê các bài viết về các bài hát thuộc thể loại Nhạc trữ tình
+select b.* from theloai t
+join theloai_baiviet tb on t.ma_tloai = tb.ma_tloai
+join baiviet b on b.ma_bviet = tb.ma_bviet
+where t.ten_tloai = 'Nhạc trữ tình';
+
+# b. Liệt kê các bài viết của tác giả “Nhacvietplus”
+select b.* from baiviet b
+join baiviet_tacgia bt on b.ma_bviet = bt.ma_bviet
+join tacgia t on t.ma_tgia = bt.ma_tgia
+where t.ten_tgia = 'Nhacvietplus';
+
+# c. Liệt kê các thể loại nhạc chưa có bài viết cảm nhận nào.
+select t.* from theloai t
+left join theloai_baiviet tb on t.ma_tloai = tb.ma_tloai
+where tb.ma_tloai is null;
+
+# d. Liệt kê các bài viết với các thông tin sau: mã bài viết, tên bài viết, tên bài hát, tên tác giả, tên
+# thể loại, ngày viết.
+
+
+# e. Tìm thể loại có số bài viết nhiều nhất
+
+# f. Liệt kê 2 tác giả có số bài viết nhiều nhất
+
+# g. Liệt kê các bài viết về các bài hát có tựa bài hát chứa 1 trong các từ “yêu”, “thương”, “anh”, “em”
+
+# h. Liệt kê các bài viết về các bài hát có tiêu đề bài viết hoặc tựa bài hát chứa 1 trong các từ
+# “yêu”, “thương”, “anh”, “em”
+
+# i. Tạo 1 view có tên vw_Music để hiển thị thông tin về Danh sách các bài viết kèm theo Tên
+# thể loại và tên tác giả
+
+# j. Tạo 1 thủ tục có tên sp_DSBaiViet với tham số truyền vào là Tên thể loại và trả về danh sách
+# Bài viết của thể loại đó. Nếu thể loại không tồn tại thì hiển thị thông báo lỗi.
+
+# k. Thêm mới cột SLBaiViet vào trong bảng theloai. Tạo 1 trigger có tên tg_CapNhatTheLoai để
+# khi thêm/sửa/xóa bài viết thì số lượng bài viết trong bảng theloai được cập nhật theo.
+
+
