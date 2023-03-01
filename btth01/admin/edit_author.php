@@ -13,14 +13,14 @@
     <?php
         include 'config.php';
         $id=$_GET['id'];
-        $sql = "SELECT ten_tloai FROM theloai WHERE ma_tloai='$id'";
+        $sql = "SELECT ten_tgia FROM tacgia WHERE ma_tgia ='$id'";
         $result=$conn->query($sql);
         $row = $result ->fetch();
         
         if(isset($_POST['save'])){
-            $ten_tloai = $_POST["txtCatName"];
-            $conn->exec("UPDATE theloai SET ten_tloai = '$ten_tloai' WHERE ma_tloai = '$id'");
-            header('Location:category.php');
+            $ten_tgia = $_POST["txtCatName"];
+            $conn->exec("UPDATE taciga SET ten_tacgia = '$ten_tgia' WHERE ma_tgia = '$id'");
+            header('Location:author.php');
         }
     ?>
     <header>

@@ -56,6 +56,29 @@
                             <th>Xóa</th>
                         </tr>
                     </thead>
+                    <?php                        
+                        include 'config.php';                        
+                        $sql = "SELECT * FROM theloai";
+                        $result=$conn->query($sql);
+                        // print_r($result);
+                        while($row = $result ->fetch()){
+                        // echo '<pre>';
+                        // print_r($row);
+                            echo
+                            "<tr>
+                                <td>".$row['ma_tloai']." </td>
+                                <td>".$row['ten_tloai']." </td>
+                                <td>
+                                <a href=\"edit_category.php?id={$row['ma_tloai']}\"><i class=\"fa-solid fa-pen-to-square\"></i></a>
+                            </td>
+                                <td>
+                                    <a href=\"delete_category.php?id={$row['ma_tloai']}\"><i class=\"fa-solid fa-trash\"></i></a>
+                                </td>
+                            </tr>";
+                        }
+
+;        
+                    ?>
                     <tbody>
                         <tr>
                             <th scope="row">1</th>
